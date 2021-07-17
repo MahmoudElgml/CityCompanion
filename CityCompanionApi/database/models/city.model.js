@@ -4,9 +4,9 @@ const citySchema =new mongoose.Schema({
     countryId: {
         type: mongoose.Schema.Types.ObjectId,
         required:true,
-        ref:'country'
+        ref:'Country'
     },
-    name:{
+        name:{
         type:String,
         trim:true,
         required:true,
@@ -21,9 +21,49 @@ const citySchema =new mongoose.Schema({
 
 })
 
-citySchema.virtual('citycitys', {
-    ref:"city",
+citySchema.virtual('cityReviews', {
+    ref:"Review",
     localField:"_id",
     foreignField:"cityId"
 })
 
+
+//cafe
+citySchema.virtual('cityCafes', {
+    ref:"Cafe",
+    localField:"_id",
+    foreignField:"cityId"
+})
+//hotel
+citySchema.virtual('cityHotels', {
+    ref:"Hotel",
+    localField:"_id",
+    foreignField:"cityId"
+})
+//museum
+citySchema.virtual('cityMuseums', {
+    ref:"Museum",
+    localField:"_id",
+    foreignField:"cityId"
+})
+
+//resturant
+citySchema.virtual('cityResturants', {
+    ref:"Resturant",
+    localField:"_id",
+    foreignField:"cityId"
+})
+//shop
+citySchema.virtual('cityShops', {
+    ref:"Shop",
+    localField:"_id",
+    foreignField:"cityId"
+})
+//walking
+citySchema.virtual('cityWalkings', {
+    ref:"Walking",
+    localField:"_id",
+    foreignField:"cityId"
+})
+const City = mongoose.model('City', citySchema)
+module.exports = City

@@ -6,6 +6,11 @@ const reviewSchema = new mongoose.Schema({
         required:true,
         ref:'User'
     },
+    cityId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:'City'
+    },
     reviewTitle:{
         type:String,
         required:true,
@@ -51,5 +56,5 @@ const reviewSchema = new mongoose.Schema({
 },
 {timestamps:true}
 )
-const review = mongoose.model('review', reviewSchema)
+const review = mongoose.model('Review', reviewSchema)
 module.exports = review

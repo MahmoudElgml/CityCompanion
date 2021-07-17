@@ -1,0 +1,38 @@
+const review = require('../../database/models/review.model')
+class reviewClass{
+    static add = async(req,res)=>{
+        try{
+            const reviewToAdd = new review({
+                userId: req.user._id,
+                ...req.body
+            }) 
+            await reviewToAdd.save()
+            res.send({
+                apiStatus:true,
+                data:reviewToAdd,
+            })
+        }
+        catch(e){
+            res.status(500).send({
+                apiStatus:false,
+                date:e.message
+            })
+        }
+    }
+    static getMyreviews = async(req,res)=>{
+        try{
+            await req.user.populate({
+                path:"userReviews"
+            }).execPopulate()
+            res.status(200).send({
+                data: {user:req.user, reviews:req.user.userReviews}
+            })
+        }
+        catch(e){
+            res.status(500).send({
+                data:e.message
+            })
+        }
+    }
+}
+module.exports = reviewClass

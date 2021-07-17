@@ -4,6 +4,7 @@ const auth = async(req,res,next)=>{
     try{
         const token = req.header('Authorization').replace('Bearer ', '')
         const decodedToken = jwt.verify(token, process.env.JWTKEY)
+        console.log(decodedToken)
         const user = await User.findOne({
             _id:decodedToken._id,
             // accountStatus: true

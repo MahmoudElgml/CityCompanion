@@ -83,14 +83,14 @@ userSchema.statics.findByCreditionals = async(email, password)=>{
 //generate token
 userSchema.methods.generateToken = async function(){
     const user = this
-    const token = jwt.sign({_id:user._id}, process.env.JWTKEY)
+    const token = jwt.sign({_id:user._id,email:user.email}, process.env.JWTKEY)
     user.tokens = user.tokens.concat({token})
     await user.save()
     return token
 }
 //relation
-userSchema.virtual('userTasks', {
-    ref:"Task",
+userSchema.virtual('userReviews', {
+    ref:"review",
     localField:"_id",
     foreignField:"userId"
 })

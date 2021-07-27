@@ -21,11 +21,13 @@ class reviewClass{
     }
     static getMyreviews = async(req,res)=>{
         try{
+            const reviewsByType=await review.find({userId:req.user._id,reviewType:"city-in-general"})
             await req.user.populate({
                 path:"userReviews"
             }).execPopulate()
+
             res.status(200).send({
-                data: {user:req.user, reviews:req.user.userReviews}
+            data: {user:req.user, reviews:/*req.user.userReviews*/reviewsByType}
             })
         }
         catch(e){

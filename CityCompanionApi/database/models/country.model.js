@@ -16,7 +16,7 @@ const countrySchema = new mongoose.Schema({
 })
 
 countrySchema.virtual('countryCities', {
-    ref:"city",
+    ref:"City",
     localField:"_id",
     foreignField:"countryId"
 })

@@ -6,6 +6,11 @@ const reviewSchema = new mongoose.Schema({
         required:true,
         ref:'User'
     },
+    placeId: {
+        type: mongoose.Schema.Types.ObjectId,
+        /***********required:true,************/
+        ref:'Category'
+    },
     cityId: {
         type: mongoose.Schema.Types.ObjectId,
         required:true,
@@ -19,7 +24,7 @@ const reviewSchema = new mongoose.Schema({
     },
     reviewType: {
         type:String,
-        enum: ['popular', 'new'],
+        enum: ['city-in-general', 'Resturant','Museum','Shop','Walking','Cafe','Hotel'],
         required:true
     },
     reviewDetails:{
@@ -56,5 +61,5 @@ const reviewSchema = new mongoose.Schema({
 },
 {timestamps:true}
 )
-const review = mongoose.model('Review', reviewSchema)
-module.exports = review
+const Review = mongoose.model('Review', reviewSchema)
+module.exports = Review

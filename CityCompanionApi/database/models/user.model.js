@@ -90,7 +90,7 @@ userSchema.methods.generateToken = async function(){
 }
 //relation
 userSchema.virtual('userReviews', {
-    ref:"review",
+    ref:"Review",
     localField:"_id",
     foreignField:"userId"
 })

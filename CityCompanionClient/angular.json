@@ -28,12 +28,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "CityCompanionClient/node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "CityCompanionClient/node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css"
             ],
             "scripts": [
-              "CityCompanionClient/node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "CityCompanionClient/node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"
             ]
           },
           "configurations": {

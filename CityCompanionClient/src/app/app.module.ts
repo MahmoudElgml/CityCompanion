@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/nav/nav.component';
@@ -26,6 +27,9 @@ import { ShopsComponent } from './pages/home/places/shops/shops.component';
 import { ResurantsComponent } from './pages/home/places/resurants/resurants.component';
 import { MuseumsComponent } from './pages/home/places/museums/museums.component';
 import { WalkingsComponent } from './pages/home/places/walkings/walkings.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MyInterceptor } from './interceptor/my.interceptor';
+
 
 
 @NgModule({
@@ -53,14 +57,19 @@ import { WalkingsComponent } from './pages/home/places/walkings/walkings.compone
     ShopsComponent,
     ResurantsComponent,
     MuseumsComponent,
-    WalkingsComponent
+    WalkingsComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:MyInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,15 +7,17 @@
         </button>
       <div class="collapse navbar-collapse" id="main_nav">
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/user/login']"> Login </a></li>
-            <li class="nav-item"><a class="nav-link"  [routerLink]="['/user/register']"> register </a></li>
+            <li class="nav-item"><a class="nav-link"  *ngIf="!_user.loggedin" [routerLink]="['/user/login']"> Login </a></li>
+            <li class="nav-item"><a class="nav-link"  *ngIf="!_user.loggedin" [routerLink]="['/user/register']"> register </a></li>
+            <li class="nav-item"><a class="nav-link" (click)='onlogout()'  *ngIf="_user.loggedin"> logout </a></li>
+            <li class="nav-item"><a class="nav-link"  *ngIf="_user.loggedin" [routerLink]="['/user/me']"> My Account </a></li>
         <li class="nav-item"><a class="nav-link"  [routerLink]="['/explore']"> Explore </a></li>
         </ul>
       </div> <!-- navbar-collapse.// -->
      </div> <!-- container-fluid.// -->
     </nav>
     </header>
-    <script>
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", function(){
   window.addEventListener('scroll', function() {
       if (window.scrollY > 50) {
@@ -30,4 +32,4 @@
       } 
   });
 }); 
-    </script>
+    </script> -->

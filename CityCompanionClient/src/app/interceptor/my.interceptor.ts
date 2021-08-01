@@ -14,18 +14,17 @@ export class MyInterceptor implements HttpInterceptor {
 
   constructor(private _user:UserService) {}
   
-  public token =localStorage.getItem('token')
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
     // request=request.clone({headers:request.headers.set('Authorization',`${this.token}`)})
     // console.log(request.headers.get("Authorization"));
     
-    console.log(this.token);
     let token = localStorage.getItem('token')
-    if(this.token){
+    console.log(token);
+    if(token){
       this._user.loggedin=true
       request = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${this.token}`)
+        headers: request.headers.set('Authorization', `Bearer ${token}`)
       })
     }
     return next.handle(request);

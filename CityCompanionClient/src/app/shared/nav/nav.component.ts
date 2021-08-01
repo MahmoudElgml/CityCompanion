@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-nav',
@@ -6,8 +7,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  
 
-  constructor(public _user:UserService) { }
+  constructor(public _user:UserService,private _router:Router) { }
   ngOnInit(): void {
   }
   token=localStorage.getItem('token')
@@ -18,7 +20,12 @@ export class NavComponent implements OnInit {
     },(e)=>{
       console.log(e)
     },()=>{
-      console.log("logged out successfuly")
+      localStorage.removeItem('token')
+
+      console.log("logged out successfuly and removed token from the browser")
+      this._router.navigateByUrl('/user/login')
+      this._user.loggedin=false
+
     }
     )
   }

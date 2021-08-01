@@ -29,6 +29,8 @@ import { MuseumsComponent } from './pages/home/places/museums/museums.component'
 import { WalkingsComponent } from './pages/home/places/walkings/walkings.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyInterceptor } from './interceptor/my.interceptor';
+import { CountriesComponent } from './pages/home/explore/countries/countries.component';
+import { CitiesComponent } from './pages/home/explore/cities/cities.component';
 
 
 
@@ -58,6 +60,8 @@ import { MyInterceptor } from './interceptor/my.interceptor';
     ResurantsComponent,
     MuseumsComponent,
     WalkingsComponent,
+    CountriesComponent,
+    CitiesComponent,
     
   ],
   imports: [

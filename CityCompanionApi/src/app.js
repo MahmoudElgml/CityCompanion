@@ -9,6 +9,7 @@ const cityRoutes = require('../routes/city.route')
 const placeRoutes = require('../routes/place.route')
 
 const app = express()
+
 app.use(cors())
 
 app.use(express.urlencoded({extended:true}))
